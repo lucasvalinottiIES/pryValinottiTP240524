@@ -38,12 +38,14 @@ namespace pryValinottiTP240524
                 objDS = new DataSet();
 
                 estadoConexion = "Conectado";
-                conexionBD.Close();
             }
             catch (Exception error)
             {
-                conexionBD.Close();
                 estadoConexion = error.Message;
+            }
+            finally
+            {
+                conexionBD.Close();
             }
         }
 
@@ -65,21 +67,23 @@ namespace pryValinottiTP240524
                 DataRow nuevoRegistro = objTabla.NewRow();
                 nuevoRegistro["Categoria"] = "Inicio Sesión";
                 DateTime fecha = DateTime.Now;
-                nuevoRegistro["FechaHora"] = fecha.ToString("dd/MM/aaaa");
+                nuevoRegistro["FechaHora"] = fecha.ToString("dd/MM/yyyy");
                 nuevoRegistro["Descripcion"] = "Inicio exitoso";
 
                 objTabla.Rows.Add(nuevoRegistro);
                 OleDbCommandBuilder constructor = new OleDbCommandBuilder(adaptadorBD);
                 adaptadorBD.Update(objDS, "Logs");
-                conexionBD.Close();
                 estadoConexion = "Registro exitoso de log";
                 MessageBox.Show(estadoConexion);
             }
             catch (Exception error)
             {
-                conexionBD.Close();
                 estadoConexion = error.Message;
                 MessageBox.Show(estadoConexion);
+            }
+            finally
+            {
+                conexionBD.Close();
             }
 
         }
@@ -109,15 +113,17 @@ namespace pryValinottiTP240524
                     }
                 }
                 MessageBox.Show("Usuario NO EXISTE");
-                conexionBD.Close();
                 return false;
 
             }
             catch (Exception error)
             {
-                conexionBD.Close();
                 estadoConexion = error.Message;
                 return false;
+            }
+            finally
+            {
+                conexionBD.Close();
             }
         }
 
@@ -146,15 +152,16 @@ namespace pryValinottiTP240524
 
                 OleDbCommandBuilder constructor = new OleDbCommandBuilder(adaptadorBD);
                 adaptadorBD.Update(objDS, "Usuario");
-
-                conexionBD.Close();
                 return true;
             }
             catch (Exception error)
             {
-                conexionBD.Close();
                 MessageBox.Show(error.Message);
                 return false;
+            }
+            finally
+            {
+                conexionBD.Close();
             }
         }
 
