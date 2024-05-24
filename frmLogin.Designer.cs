@@ -84,7 +84,7 @@
             // 
             // cmdIniciar
             // 
-            cmdIniciar.Location = new Point(72, 195);
+            cmdIniciar.Location = new Point(65, 195);
             cmdIniciar.Name = "cmdIniciar";
             cmdIniciar.Size = new Size(96, 42);
             cmdIniciar.TabIndex = 5;
@@ -94,7 +94,7 @@
             // 
             // cmdRegistrarse
             // 
-            cmdRegistrarse.Location = new Point(191, 195);
+            cmdRegistrarse.Location = new Point(184, 195);
             cmdRegistrarse.Name = "cmdRegistrarse";
             cmdRegistrarse.Size = new Size(96, 42);
             cmdRegistrarse.TabIndex = 6;
